@@ -7,11 +7,22 @@ export default class MainScene extends Phaser.Scene {
     }
 
     create() {
-
         // World setup
         this.matter.world.setBounds(0, 0, this.game.config.width, this.game.config.height, 32, true, true, true, true);
 
         // Lander
-        let lander = new Lander(this);
+        this.lander = new Lander(this);
+
+        let cursors = this.input.keyboard.createCursorKeys();
+        cursors.left.on('down', () => { this.lander.tiltLeft(); });
+        cursors.left.on('up', () => { this.lander.tiltOff(); });
+        cursors.right.on('down', () => { this.lander.tiltRight(); });
+        cursors.right.on('up', () => { this.lander.tiltOff(); });
+        cursors.up.on('down', () => { this.lander.engineOn(); });
+        cursors.up.on('up', () => { this.lander.engineOff(); });
+    }
+
+    update() {
+        this.lander.update();
     }
 }
