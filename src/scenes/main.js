@@ -6,6 +6,11 @@ export default class MainScene extends Phaser.Scene {
         super();
     }
 
+    preload() {
+        this.load.image('fire', 'src/assets/fire.png');
+
+    }
+
     create() {
         // World setup
         this.matter.world.setBounds(0, 0, this.game.config.width, this.game.config.height, 32, true, true, true, true);
@@ -22,7 +27,7 @@ export default class MainScene extends Phaser.Scene {
         cursors.up.on('up', () => { this.lander.engineOff(); });
     }
 
-    update() {
-        this.lander.update();
+    update(time, delta) {
+        this.lander.update(delta);
     }
 }
