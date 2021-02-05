@@ -3,7 +3,7 @@ import Lander from '../entities/lander.js';
 
 export default class MainScene extends Phaser.Scene {
     constructor() {
-        super();
+        super('main-scene');
     }
 
     preload() {
@@ -25,6 +25,9 @@ export default class MainScene extends Phaser.Scene {
         cursors.right.on('up', () => { this.lander.tiltOff(); });
         cursors.up.on('down', () => { this.lander.engineOn(); });
         cursors.up.on('up', () => { this.lander.engineOff(); });
+
+        // Start UI Scene
+        this.scene.run("ui-scene", { lander: this.lander });
     }
 
     update(time, delta) {

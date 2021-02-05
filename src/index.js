@@ -1,5 +1,6 @@
 import Phaser from 'phaser';
 import MainScene from './scenes/main.js';
+import UIScene from './scenes/ui.js';
 
 
 const config = {
@@ -7,7 +8,7 @@ const config = {
     parent: 'phaser-example',
     width: 800,
     height: 600,
-    scene: [MainScene],
+    scene: [MainScene, UIScene],
     render: {
         pixelArt: true,
 

@@ -17,7 +17,7 @@ Tasks
 - [X] ~~*Make lander explode*~~ [2021-02-03]
 - [X] ~~*Make lander land smoothly*~~ [2021-02-03]
 - [X] ~~*Add fuel limitation*~~ [2021-02-03]
-- [ ] Display fuel on screen
+- [X] ~~*Display fuel on screen in a separe scene*~~ [2021-02-05]
 - [ ] Game over scene
 - [ ] Generate ground randomly
 - [ ] Add fire animation (jet/propeller)

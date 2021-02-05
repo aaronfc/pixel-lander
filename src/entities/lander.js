@@ -19,7 +19,7 @@ export default class Lander extends Phaser.GameObjects.Rectangle {
 
         // Lander properties
         this.isEngineOn = false;
-        this.fuel = 5000;
+        this.fuel = 10000;
 
         this.setOnCollide((pair) => {
             let currentVelocity = new Phaser.Math.Vector2(this.body.velocity).length();
@@ -90,8 +90,8 @@ export default class Lander extends Phaser.GameObjects.Rectangle {
         }
         if (this.fuel <= 0) {
             this.engineOff();
+            this.fuel = 0;
         }
-        console.log(this.fuel);
     }
 
     explode() {
