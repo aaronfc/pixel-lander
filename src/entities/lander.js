@@ -103,5 +103,6 @@ export default class Lander extends Phaser.GameObjects.Rectangle {
         this.particleEmitter.start();
         // Make object not visible
         this.visible = false;
+        setTimeout(() => { this.scene.gameOver() }, 3000);
     }
 }

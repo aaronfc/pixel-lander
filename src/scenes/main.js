@@ -6,11 +6,6 @@ export default class MainScene extends Phaser.Scene {
         super('main-scene');
     }
 
-    preload() {
-        this.load.image('fire', 'src/assets/fire.png');
-
-    }
-
     create() {
         // World setup
         this.matter.world.setBounds(0, 0, this.game.config.width, this.game.config.height, 32, true, true, true, true);
@@ -26,11 +21,17 @@ export default class MainScene extends Phaser.Scene {
         cursors.up.on('down', () => { this.lander.engineOn(); });
         cursors.up.on('up', () => { this.lander.engineOff(); });
 
-        // Start UI Scene
+        // Start UI scene
         this.scene.run("ui-scene", { lander: this.lander });
     }
 
     update(time, delta) {
         this.lander.update(delta);
+    }
+
+    gameOver() {
+        // Stop UI scene
+        this.scene.stop('ui-scene');
+        this.scene.start('game-over-scene');
     }
 }

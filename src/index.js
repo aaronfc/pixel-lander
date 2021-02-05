@@ -1,6 +1,8 @@
 import Phaser from 'phaser';
+import BootScene from './scenes/boot.js';
 import MainScene from './scenes/main.js';
 import UIScene from './scenes/ui.js';
+import GameOverScene from './scenes/game-over.js';
 
 
 const config = {
@@ -8,7 +10,7 @@ const config = {
     parent: 'phaser-example',
     width: 800,
     height: 600,
-    scene: [MainScene, UIScene],
+    scene: [BootScene, MainScene, UIScene, GameOverScene],
     render: {
         pixelArt: true,
 
