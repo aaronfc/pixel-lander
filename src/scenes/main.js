@@ -1,4 +1,5 @@
 import Phaser from 'phaser';
+import Ground from '../entities/ground.js';
 import Lander from '../entities/lander.js';
 
 export default class MainScene extends Phaser.Scene {
@@ -8,7 +9,7 @@ export default class MainScene extends Phaser.Scene {
 
     create() {
         // World setup
-        this.matter.world.setBounds(0, 0, this.game.config.width, this.game.config.height, 32, true, true, true, true);
+        this.matter.world.setBounds(0, 0, this.game.config.width * 5, this.game.config.height, 32, true, true, true, true);
 
         // Lander
         this.lander = new Lander(this);
@@ -23,6 +24,13 @@ export default class MainScene extends Phaser.Scene {
 
         // Start UI scene
         this.scene.run("ui-scene", { lander: this.lander });
+
+        // Ground
+        this.ground = new Ground(this, 0, this.game.config.height - 200);
+
+        // Camera
+        this.cameras.main.setBounds(0, 0, this.game.config.width * 5, this.game.config.height);
+        this.cameras.main.startFollow(this.lander);
     }
 
     update(time, delta) {

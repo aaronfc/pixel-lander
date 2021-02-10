@@ -1,6 +1,7 @@
 import Phaser from 'phaser';
 
 const MAX_VELOCITY_TO_LAND = 1.0;
+const INITIAL_FUEL = 10000;
 
 export default class Lander extends Phaser.GameObjects.Rectangle {
     constructor(scene) {
@@ -19,7 +20,7 @@ export default class Lander extends Phaser.GameObjects.Rectangle {
 
         // Lander properties
         this.isEngineOn = false;
-        this.fuel = 10000;
+        this.fuel = INITIAL_FUEL;
 
         this.setOnCollide((pair) => {
             let currentVelocity = new Phaser.Math.Vector2(this.body.velocity).length();
@@ -47,10 +48,6 @@ export default class Lander extends Phaser.GameObjects.Rectangle {
             x: 150,
             y: 150
         });
-    }
-
-    create() {
-        // Empty scene!
     }
 
     tiltRight() {
